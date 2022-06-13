@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+    <script>
+        const url = "/user/login"
+
+        window.onload = function () {
+            $("#login").on("click", function () {
+                // 检测地址
+                alert("你点击了button按钮 url: " + url);
+                // 获取input标签里面的输入的值
+                var account_number = $('input[name="account_number"]').val();
+                var password = $('input[name="account_number"]').val();
+                // 因为服务端是接受RequestBody 所以先转为JSON字段
+                var data = {
+                    "accountNumber": account_number,
+                    "password": password,
+                }
+                alert("accountNumber : " + data.accountNumber + " password" + data.password);
+                $.ajax({
+                    url: url,
+                    type: 'post',
+                    data: JSON.stringify(data),
+                    contentType: 'application/json',
+                    success: function (data) {
+                        console.log(data);
+                        if (data.code === 200) {
+                            alert("登录成功");
+                        } else {
+                            alert("登录失败");
+                        }
+
+                    }
+                })
+            });
+        }
+    </script>
+</head>
+<body>
+账 号:<input name="account_number" type="text" id="account_number"/><br>
+密 码:<input name="password" type="password" id="password"> <br>
+<input type="button" value="登录" id="login">
+</body>
+</html>
