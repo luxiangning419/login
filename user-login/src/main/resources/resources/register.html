@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+    <script>
+        const url = "/user/register"
+
+        window.onload = function () {
+            $("#register").on("click", function () {
+                // 检测地址
+                alert("你点击了button按钮 url: " + url);
+                // 获取input标签里面的输入的值
+                var email = $('input[name="email"]').val();
+                var password = $('input[name="password"]').val();
+                // 因为服务端是接受RequestBody 所以先转为JSON字段
+                var data = {
+                    "email": email,
+                    "password": password,
+                }
+                $.ajax({
+                    url: url,
+                    type: 'post',
+                    data: JSON.stringify(data),
+                    contentType: 'application/json',
+                    success: function (data) {
+                        alert(data.msg);
+                    }
+                })
+            });
+        }
+    </script>
+</head>
+<body>
+邮 箱:<input name="email" type="text" id="account_number"/><br>
+密 码:<input name="password" type="password" id="password"> <br>
+<input type="button" value="注册" id="register">
+</body>
+</html>
