@@ -5,6 +5,12 @@
 ## 配置参数修改
 修改user-login/user-message下 application.yml相关数据库配置、kafka配置、邮件配置
 
+##数据库
+创建mysql数据库user<br>
+创建表：<br>
+执行user-message resources下 mail.sql<br>
+执行user-login resources下user.sql<br>
+
 ### How to build
 
 执行脚本
