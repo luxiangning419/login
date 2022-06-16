@@ -8,7 +8,7 @@ spring:
     password: 12345678
 
   kafka:
-    bootstrap-servers: kafka1-uat.longfor.com:9092,kafka2-uat.longfor.com:9092,kafka3-uat.longfor.com:9092
+    bootstrap-servers:
     producer:
       # 发生错误后，消息重发的次数。
       retries: 0

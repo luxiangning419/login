@@ -4,7 +4,7 @@
 #构建docker image
 ##################################################
 if [ "build" = "$1"  ]; then
-    mvn spring-boot:build-image -Dmaven.test.skip=true
+    mvn spring-boot:build-image
 fi
 ##################################################
 #启动登录注册模块
